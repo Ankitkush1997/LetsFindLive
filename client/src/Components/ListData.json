@@ -1,0 +1,31 @@
+[{
+    "id": 1,
+    "url":"https://in.norton.com/official-site/india-2022",
+    "ad":true,
+    "title":"Norton™ AntiVirus Plus - 2022 - Online Flash Sale: Only RS.499",
+    "phone":"+3189940-987",
+    "description": "Real-time Threat Protection, Password Manager, Firewall for PC or Mac® & More. Powerful Protection of Your Devices and Personal information. Download It Today! PCMag Editor's Choice. 24/7 Customer Support. Net Banking Accepted. 1 Billion Devices Secured."
+}, {
+    "id": 2,
+    "url":"https://www.safetydetective.com/",
+    "ad":true,
+    "title":"10 Best PC Malware Protection - Best Deals for Jun. 2022",
+    "phone":"+3189940",
+    "description": "Get Malware Protection and Protect Your Most Valuable Data from Cyber Attacks and Malware. Compare Best Malware Protection Software for 2022 - Scan Your Computer for Viruses Today! Free Trial. Money Back Guarantee. Anti-Trojans. 24/7 Customer Support."
+},
+{
+    "id": 3,
+    "url":"https://www.antivirusguide.com/anti-malware/mac",
+    "ad":false,
+    "title":"Norton™ AntiVirus Plus - 2022 - Online Flash Sale: Only RS.499",
+    "phone":"+3189940-9879435-324",
+    "description": "Real-time Threat Protection, Password Manager, Firewall for PC or Mac® & More. Powerful Protection of Your Devices and Personal information. Download It Today! PCMag Editor's Choice. 24/7 Customer Support. Net Banking Accepted. 1 Billion Devices Secured."
+},{
+    "id": 4,
+    "url":"https://in.norton.com/official-site/india-2022",
+    "ad":false,
+    "title":"Norton™ AntiVirus Plus - 2022 - Online Flash Sale: Only RS.499",
+    "phone":"+3189940-9879435-324",
+    "description": "Real-time Threat Protection, Password Manager, Firewall for PC or Mac® & More. Powerful Protection of Your Devices and Personal information. Download It Today! PCMag Editor's Choice. 24/7 Customer Support. Net Banking Accepted. 1 Billion Devices Secured."
+}
+]
