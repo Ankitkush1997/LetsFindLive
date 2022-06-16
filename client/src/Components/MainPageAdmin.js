@@ -107,29 +107,35 @@ function MainPageAdmin(props) {
                   </Modal.Header>
                     <Modal.Body>
                       <Form onSubmit={(e) => handleSubmit(e)}>
+                      <Form.Group style={{display:'flex',justifyContent:"flex-end"}} onChange={(e) => setAdsec(e.target.value)} value={adsec} className="mb-3" controlId="formBasicEmail">
+                          <Form.Label style={{marginRight:"10px"}}><b>Ad</b></Form.Label>
+                          <Form.Check 
+                            onChange={onSwitchAction}
+                            checked={isSwitchOn}
+                            type="switch"
+                            id="custom-switch"  
+                            value={item.ad}              
+                          />
+                            </Form.Group>
                         <Form.Group onChange={(e) => setDisplayURL(e.target.value)} value={displayURL}  className="mb-3" controlId="floatingTextarea2">
                           <Form.Label><b>Display URL</b></Form.Label>
-                          <Form.Control type="text" placeholder="Enter Display URL" />
+                          <Form.Control type="text" placeholder="Enter Display URL" value={item.url} />
                         </Form.Group>
                         <Form.Group onChange={(e) => setTitle(e.target.value)} value={title} className="mb-3" controlId="floatingTextarea2">
                           <Form.Label><b>Title</b></Form.Label>
-                          <Form.Control type="text" placeholder="Enter Title" />
+                          <Form.Control type="text" placeholder="Enter Title" value={item.title}/>
                         </Form.Group>
                         <Form.Group onChange={(e) => setDescription(e.target.value)} value={description} className="mb-3" controlId="floatingTextarea2">
                           <Form.Label><b>Description</b></Form.Label>
-                          <Form.Control as="textarea" placeholder="Enter Description" />
+                          <Form.Control as="textarea" placeholder="Enter Description" value={item.description}/>
                         </Form.Group>
                         <Form.Group onChange={(e) => setPhone(e.target.value)} value={phone}className="mb-3" controlId="floatingTextarea2">
                           <Form.Label><b>Phone</b></Form.Label>
-                          <Form.Control type="text" placeholder="Enter Phone" />
+                          <Form.Control value={item.phone} type="text" placeholder="Enter Phone" />
                         </Form.Group>
                         <Form.Group onChange={(e) => setTargetURL(e.target.value)} value={targetURL} className="mb-3" controlId="floatingTextarea2">
                           <Form.Label><b>Target URL</b></Form.Label>
-                          <Form.Control type="text" placeholder="Enter Target URL" />
-                        </Form.Group>
-                        <Form.Group onChange={(e) => setAd(e.target.value)} value={ad} className="mb-3" controlId="floatingTextarea2">
-                          <Form.Label><b>Ad</b></Form.Label>
-                          <Form.Control type="text" placeholder="Ad" />
+                          <Form.Control value={item.url} type="text" placeholder="Enter Target URL" />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                           Submit
@@ -154,8 +160,7 @@ function MainPageAdmin(props) {
                             onChange={onSwitchAction}
                             checked={isSwitchOn}
                             type="switch"
-                            id="custom-switch"
-                            
+                            id="custom-switch"                
                           />
                             </Form.Group>
                         <Form.Group onChange={(e) => setDisplayURLsec(e.target.value)} value={displayURLsec}  className="mb-3" controlId="floatingTextarea2">
@@ -164,19 +169,19 @@ function MainPageAdmin(props) {
                         </Form.Group>
                         <Form.Group onChange={(e) => setTitlesec(e.target.value)} value={titlesec} className="mb-3" controlId="floatingTextarea2">
                           <Form.Label><b>Title</b></Form.Label>
-                          <Form.Control type="text" placeholder="Enter Title" />
+                          <Form.Control  type="text" placeholder="Enter Title" />
                         </Form.Group>
                         <Form.Group onChange={(e) => setDescriptionsec(e.target.value)} value={descriptionsec} className="mb-3" controlId="floatingTextarea2">
                           <Form.Label><b>Description</b></Form.Label>
-                          <Form.Control as="textarea" placeholder="Enter Description" />
+                          <Form.Control  as="textarea" placeholder="Enter Description" />
                         </Form.Group>
                         <Form.Group onChange={(e) => setPhonesec(e.target.value)} value={phonesec}className="mb-3" controlId="floatingTextarea2">
                           <Form.Label><b>Phone</b></Form.Label>
-                          <Form.Control type="text" placeholder="Enter Phone" />
+                          <Form.Control  type="text" placeholder="Enter Phone" />
                         </Form.Group>
                         <Form.Group onChange={(e) => setTargetURLsec(e.target.value)} value={targetURLsec} className="mb-3" controlId="floatingTextarea2">
                           <Form.Label><b>Target URL</b></Form.Label>
-                          <Form.Control type="text" placeholder="Enter Target URL" />
+                          <Form.Control  type="text" placeholder="Enter Target URL" />
                         </Form.Group>
                        
                         <Button variant="primary" type="submit">

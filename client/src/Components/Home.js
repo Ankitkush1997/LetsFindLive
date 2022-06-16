@@ -9,15 +9,18 @@ const Home = () => {
     const [listItem, setListItem] = useState([])
     const [ itemValues, setItemValues] = useState(" ")
 
+    const keys = [1,2,3,4,5,6,7,8,9,10]
     const handleSubmit = () => {
       setModalShow(false)
-         setListItem([...listItem,itemValues])
+         setListItem([...listItem,{id:keys,itemValues}])
          console.log(listItem)
     }
 
-    const handleDelete = () =>{
+    const filterdData = () =>{
+      
         
     }
+
 
   return (
     <>
@@ -35,7 +38,7 @@ const Home = () => {
         <Accordion.Collapse key={e.slice(2,)} eventKey="0">
           <Card.Body style={{display:"flex",justifyContent:"space-between"}}>
           <Link target="_blank" to={`/find/${e}`}>{e}</Link>
-          <Button className='btn-danger' onClick={handleDelete}> Delete </Button>
+          <Button onClick={(e) =>filterdData()} className='btn-danger'> Delete </Button>
           </Card.Body>
         </Accordion.Collapse>))}
       </Card>
