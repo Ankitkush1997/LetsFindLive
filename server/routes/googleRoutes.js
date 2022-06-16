@@ -1,16 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const {
-  searchGoogleWeb,
-  searchGoogleImages
-} = require('../controllers/googleController');
-const {storeSearchData} = require('../controllers/storeSearchDataController');
-const {deleteStoredData} = require('../controllers/deleteGoogleData');
-const {fetchGoogleData} = require('../controllers/fetchGoogleDataController');
-router.get('/search-web/:searchValue/:pageNumber', searchGoogleWeb);
-router.get('/search-images/:searchValue/:pageNumber', searchGoogleImages);
-router.post('/search/add', storeSearchData);
-router.get('/search/delete/:id', deleteStoredData);
-router.get('/search/fetch/data', fetchGoogleData);
+  googleController,
+  storeSearchDataController,
+  fetchGoogleDataController,
+  deleteGoogleDataController,
+  storeUrlController
+} = require('../controllers');
+
+router.get('/search-web/:searchValue/:pageNumber', googleController.searchGoogleWeb);
+router.get('/search-images/:searchValue/:pageNumber', googleController.searchGoogleImages);
+router.post('/search/add', storeSearchDataController.storeSearchData);
+router.get('/search/delete/:id', deleteGoogleDataController.deleteStoredData);
+router.get('/search/fetch/data', fetchGoogleDataController.fetchGoogleData);
+
+//  url 
+  router.get('/search/add/url/:url', storeUrlController.storeUrls);
+  router.get('/search/delete/url/:url', storeUrlController.deleteURLS);
+  router.get('/search/allURL', storeUrlController.URLList);
+
 
 module.exports = router;

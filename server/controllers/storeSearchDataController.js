@@ -11,15 +11,14 @@ const storeSearchData = async (req, res) => {
         fetchData.forEach(element => {
           storeDataIntoArray.push(element)
         });
-      }else{
-        res.send({ code: 205, message: 'data format stored into db is worng'})
+      } else {
+        res.send({ code: 205, message: 'data format stored into db is worng' })
         return
       }
       storeDataIntoArray.push(searchData)
       data = JSON.stringify(storeDataIntoArray, null, 2)
     } else {
       data = JSON.stringify([searchData], null, 2)
-
     }
     fs.writeFileSync("searchData.json", data);
     res.send({ code: 200, message: 'success', data: searchData })
