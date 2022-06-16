@@ -2,15 +2,15 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <header class='header'>
+    <header className='header'>
       <a
-        class='logo'
+        className='logo'
         href='/'
         alt='Go to Info.com Homepage'
         aria-label='Go to Info.com Homepage'
         style={{ userSelect: 'none' }}
       >
-        {/* <img alt='Info.com logo' src='./images/logo.svg' class='logo__image' /> */}
+        {/* <img alt='Info.com logo' src='./images/logo.svg' className='logo__image' /> */}
         <span className='header-title-1'>letsfind</span>
         <span className='header-title-2'>.live</span>
       </a>

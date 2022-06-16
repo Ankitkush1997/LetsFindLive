@@ -11,8 +11,8 @@ const AllRoutes = () => {
   return (
     <Routes>
       <Route path='/' element={<HomeView />} exact />
-      <Route path='/find/1' element={<MainPage />} exact />
-      <Route path='/find' element={<MainPageAdmin input={inputText} />} exact />
+      <Route path='/find' element={<MainPage />} exact />
+      <Route path='/find/:url' element={<MainPageAdmin input={inputText} />} exact />
       <Route path='/home' element={<Home />} exact />
       <Route path='/search/:searchValue' element={<SearchView />} exact />
     </Routes>
