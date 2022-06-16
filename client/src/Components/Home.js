@@ -9,10 +9,9 @@ const Home = () => {
     const [listItem, setListItem] = useState([])
     const [ itemValues, setItemValues] = useState(" ")
 
-    const keys = [1,2,3,4,5,6,7,8,9,10]
     const handleSubmit = () => {
       setModalShow(false)
-         setListItem([...listItem,{id:keys,itemValues}])
+         setListItem([...listItem,itemValues])
          console.log(listItem)
     }
 
