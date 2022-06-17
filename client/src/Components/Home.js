@@ -23,7 +23,7 @@ const Home = () => {
     console.log(listItem);
   };
 
-  useEffect(() => {
+  const fetchUrl = () => {
     axios
       .get(`http://localhost:5005/api/google/search/allURL`)
       .then((response) => {
@@ -33,6 +33,10 @@ const Home = () => {
       .catch((error) => {
         console.log("error", error);
       });
+  };
+
+  useEffect(() => {
+    fetchUrl();
   }, []);
 
   console.log("listItem", listItem);
@@ -42,6 +46,7 @@ const Home = () => {
       .get(`http://localhost:5005/api/google/search/add/url/${itemValues}`)
       .then((response) => {
         // setFilteredDataApi(response?.data?.data);
+        fetchUrl();
       })
       .catch((error) => {
         console.log("error", error);

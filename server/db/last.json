@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1c7e41cd-d628-43ec-b900-1fd5f0eac161",
+    "url": "aaa",
+    "title": "aaa",
+    "description": "aaa",
+    "phone": "aaa",
+    "targeturl": "aaa",
+    "ad": true
+  },
+  {
+    "id": "d0aa5d0f-88bf-44a8-b853-33b2daf1ffca",
+    "url": "test",
+    "title": "test",
+    "description": "test",
+    "phone": "test",
+    "targeturl": "test",
+    "ad": true
+  }
+]
