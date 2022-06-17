@@ -1,13 +1,16 @@
-const deleteGoogleDataController = require('./deleteGoogleData')
-const fetchGoogleDataController = require('./fetchGoogleDataController')
-const storeSearchDataController = require('./storeSearchDataController')
+const deletePageDataController = require('./deletePageDataController')
+const updatePageDataController = require('./updatePageDataController')
+const addPageDataController = require('./addPageDataController')
 const googleController = require('./googleController')
 const storeUrlController  = require('./storeGoogleUrl')
+const getPageAllDataController  = require('./pagesAllDataController')
+
 
 module.exports= {
-    deleteGoogleDataController,
-    fetchGoogleDataController,
-    storeSearchDataController,
+    deletePageDataController,
+    updatePageDataController,
+    addPageDataController,
     googleController,
-    storeUrlController
+    storeUrlController,
+    getPageAllDataController,
 }
