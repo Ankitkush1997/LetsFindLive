@@ -29,7 +29,7 @@ function MainPageAdmin(props) {
   };
   const fetchData = () => {
     axios
-      .get(`http://localhost:5000/api/google/search/getUrlData/${url}`)
+      .get(`https://localhost:5000/api/google/search/getUrlData/${url}`)
       .then((response) => {
         setFilteredDataApi(response?.data?.data);
       })
@@ -56,7 +56,7 @@ function MainPageAdmin(props) {
     };
 
     axios
-      .post(`http://localhost:5000/api/google/search/add`, user)
+      .post(`https://localhost:5000/api/google/search/add`, user)
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -104,9 +104,9 @@ function MainPageAdmin(props) {
     console.log(data);
     setFilteredDataApi([...data]);
     axios
-      // .get(`http://localhost:5000/api/google/search/delete/${id}`)
+      // .get(`https://localhost:5000/api/google/search/delete/${id}`)
       .get(
-        `http://localhost:5000/api/google/search/delete?pageName=${url}&id=${id}`
+        `https://localhost:5000/api/google/search/delete?pageName=${url}&id=${id}`
       )
       .then((response) => {})
       .catch((error) => {
@@ -129,7 +129,7 @@ function MainPageAdmin(props) {
     };
 
     axios
-      .post(`http://localhost:5000/api/google/search/update`, user)
+      .post(`https://localhost:5000/api/google/search/update`, user)
       .then((res) => {
         console.log(res);
         console.log(res.data);

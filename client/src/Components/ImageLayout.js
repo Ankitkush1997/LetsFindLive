@@ -17,7 +17,7 @@ const ImageLayout = ({
   const getNextData = () => {
     axios
       .get(
-        `http://localhost:5000/api/google/search-images/${searchValue}/${pageNum}`
+        `https://localhost:5000/api/google/search-images/${searchValue}/${pageNum}`
       )
       .then((response) => {
         console.log(response.data);
