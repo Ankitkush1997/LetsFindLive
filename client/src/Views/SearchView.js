@@ -17,7 +17,7 @@ const SearchView = () => {
 
   useEffect(() => {
     axios
-      .get(`https://search.letsfind.live/api/google/search-web/${searchValue}/1`)
+      .get(`http://localhost:5000/api/google/search-web/${searchValue}/1`)
       .then((response) => {
         setResults(response.data.results);
         setSearchInformation(response.data.searchInformation);
@@ -29,7 +29,7 @@ const SearchView = () => {
         setTimeout(() => navigate('/'), 2000);
       });
     axios
-      .get(`https://search.letsfind.live/api/google/search-images/${searchValue}/1`)
+      .get(`http://localhost:5000/api/google/search-images/${searchValue}/1`)
       .then((response) => {
         setImages(response.data.images);
         setImageSearchInformation(response.data.searchInformation);
@@ -44,7 +44,7 @@ const SearchView = () => {
 
   const handleSearch = (i) => {
     axios
-      .get(`https://search.letsfind.live/api/google/search-web/${searchValue}/${i}`)
+      .get(`http://localhost:5000/api/google/search-web/${searchValue}/${i}`)
       .then((response) => {
         setResults(response.data.results);
       })
