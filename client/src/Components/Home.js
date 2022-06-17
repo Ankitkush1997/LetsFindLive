@@ -25,7 +25,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/api/google/search/allURL`)
+      .get(`http://localhost:5000/api/google/search/allURL`)
       .then((response) => {
         // setFilteredDataApi(response?.data?.data);
         setListItem(response?.data?.data);
@@ -39,7 +39,7 @@ const Home = () => {
 
   const addUrl = () => {
     axios
-      .get(`http://localhost:5005/api/google/search/add/url/${itemValues}`)
+      .get(`http://localhost:5000/api/google/search/add/url/${itemValues}`)
       .then((response) => {
         // setFilteredDataApi(response?.data?.data);
       })
@@ -50,7 +50,7 @@ const Home = () => {
   const deleteUrl = (e) => {
     console.log("val", e);
     axios
-      .get(`http://localhost:5005/api/google/search/delete/url/${e}`)
+      .get(`http://localhost:5000/api/google/search/delete/url/${e}`)
       .then((response) => {
         // setFilteredDataApi(response?.data?.data);
       })

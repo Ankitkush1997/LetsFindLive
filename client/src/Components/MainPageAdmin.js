@@ -106,7 +106,7 @@ function MainPageAdmin(props) {
     axios
       // .get(`http://localhost:5005/api/google/search/delete/${id}`)
       .get(
-        `http://localhost:5005/api/google/search/delete?pageName=${url}&id=${id}`
+        `http://localhost:5000/api/google/search/delete?pageName=${url}&id=${id}`
       )
       .then((response) => {})
       .catch((error) => {
@@ -129,7 +129,7 @@ function MainPageAdmin(props) {
     };
 
     axios
-      .post(`http://localhost:5005/api/google/search/update`, user)
+      .post(`http://localhost:5000/api/google/search/update`, user)
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -454,7 +454,6 @@ function MainPageAdmin(props) {
               value={displayURL}
               className="mb-3"
               controlId="floatingTextarea2"
-              value={displayURL}
             >
               <Form.Label>
                 <b>Display URL</b>
