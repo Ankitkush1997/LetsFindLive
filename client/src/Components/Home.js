@@ -58,6 +58,7 @@ const Home = () => {
       .get(`http://localhost:5000/api/google/search/delete/url/${e}`)
       .then((response) => {
         // setFilteredDataApi(response?.data?.data);
+        fetchUrl();
       })
       .catch((error) => {
         console.log("error", error);

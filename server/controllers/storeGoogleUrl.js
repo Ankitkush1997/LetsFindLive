@@ -63,6 +63,11 @@ const deleteURLS = async (req, res) => {
       res.send({ code: 206, message: 'please add url', data: [] })
       return
     }
+    let isExists = fs.existsSync(__dirname + `/../db/${url}.json`)
+      if(!isExists){
+        res.send({ code: 211, message: 'file not found', data: [] })
+        return
+      }
     try {
       fs.unlinkSync(__dirname + `/../db/${url}.json`, '')
     } catch (error) {
