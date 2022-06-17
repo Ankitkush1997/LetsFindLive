@@ -1,4 +1,4 @@
-server/db
-client/package-lock.json
-Server/package-lock.json
+/server/db
+/client/package-lock.json
+/server/package-lock.json
 
