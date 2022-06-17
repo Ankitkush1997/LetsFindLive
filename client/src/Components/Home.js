@@ -50,7 +50,7 @@ const Home = () => {
   const deleteUrl = (e) => {
     console.log("val", e);
     axios
-      .get(`http://localhost:5005/api/google/search/delete/${e}`)
+      .get(`http://localhost:5005/api/google/search/delete/url/${e}`)
       .then((response) => {
         // setFilteredDataApi(response?.data?.data);
       })
