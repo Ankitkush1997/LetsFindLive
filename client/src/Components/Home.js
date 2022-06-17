@@ -25,7 +25,7 @@ const Home = () => {
 
   const fetchUrl = () => {
     axios
-      .get(`https://localhost:5000/api/google/search/allURL`)
+      .get(`https://search.letsfind.live/api/google/search/allURL`)
       .then((response) => {
         // setFilteredDataApi(response?.data?.data);
         setListItem(response?.data?.data);
@@ -43,7 +43,7 @@ const Home = () => {
 
   const addUrl = () => {
     axios
-      .get(`https://localhost:5000/api/google/search/add/url/${itemValues}`)
+      .get(`https://search.letsfind.live/api/google/search/add/url/${itemValues}`)
       .then((response) => {
         // setFilteredDataApi(response?.data?.data);
         fetchUrl();
@@ -55,7 +55,7 @@ const Home = () => {
   const deleteUrl = (e) => {
     console.log("val", e);
     axios
-      .get(`https://localhost:5000/api/google/search/delete/url/${e}`)
+      .get(`https://search.letsfind.live/api/google/search/delete/url/${e}`)
       .then((response) => {
         // setFilteredDataApi(response?.data?.data);
         fetchUrl();
