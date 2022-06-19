@@ -1,11 +1,33 @@
-import { React } from 'react'
-import data from "./ListData.json"
+import { React, useEffect, useState } from 'react'
 import {Card } from "react-bootstrap";
 import Header from './Header';
+import { Link, useParams } from 'react-router-dom'
+import axios from 'axios';
 
 
 function MainPageAdmin(props) {
+    const [filteredDataApi, setFilteredDataApi] = useState([]);
+    const [responseMessage,setResponseMessage] = useState("")
+    const {url} = useParams()
   
+    console.log(url,"params")
+     const fetchData = () => {
+        axios
+          .get(`https://search.letsfind.live/api/google/search/getUrlData/${url}`)
+          .then((response) => {
+            setFilteredDataApi(response?.data?.data);
+            setResponseMessage(response.data.message)
+          })
+          .catch((error) => {
+            console.log("error", error);
+          });
+      };
+      useEffect(() => {
+        fetchData();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, []);
+
+
     return (<>
     <Header/>
     <hr/>
@@ -13,22 +35,31 @@ function MainPageAdmin(props) {
     <ul style={{width:"50%",marginLeft:"80px"}}>
     <div style={{display:"flex", justifyContent:"space-between"}}>
     </div>
-            {data.map((item) => (
-            <Card.Body key={item.id} style={{display:"flex",justifyContent:"space-between"}}>
-                <div style={{display:"inline-block"}}>
-                <div style={{display:"flex",justifyContent:"space-between"}}>
-                  <div style={{display:"flex"}}>
-                   <p style={{fontWeight:"bold",color:"grey",marginRight:"10px",display:`${item.ad===true ? " " :"none" }`}}>Ad ·</p>
-                   <p>{item.url}</p>
-                  </div>
-                   <p >{item.phone}</p>
-                </div>
-                <div>
-                    <p style={{fontSize:"20px",color:"mediumblue"}}>{item.title}</p>
-                    <p>{item.description}</p>
-                </div>
-                </div>
-                </Card.Body>))}
+        <>
+        
+            {filteredDataApi?.map((item) => (
+                <Card.Body key={item.id} style={{display:"flex",justifyContent:"space-between"}}>
+                  <div style={{ display: "inline-block",width:"100%" }}>
+                    <div style={{display:"flex",justifyContent:"space-between"}}>
+                        <div style={{display:"flex"}}>
+                        <p style={{fontWeight:"bold",color:"grey",marginRight:"10px",display:`${item.ad===true ? " " :"none" }`}}>Ad ·</p>
+                        <p>{item.url}</p>
+                        </div>
+                        
+                        <p >{item.phone}</p>
+                    </div>
+                    <div>
+                        <p style={{fontSize:"20px",color:"mediumblue",display:"flex",justifyContent:"space-between"}}>{item.title}<Link style={{fontSize:"10px",marginTop:"5px",color:"blue"}} to="/privacy">Privacy</Link></p>
+                        <p style={{width:"100%"}}>{item.description}</p> 
+                    </div>
+                    </div>
+                    </Card.Body>))} 
+                    
+                    <h1 style={{display:`${responseMessage==="success"?"none":""}`}}>{responseMessage}</h1>
+        
+        
+        </>
+            
         </ul>
     </>
         

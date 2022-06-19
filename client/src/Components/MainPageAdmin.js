@@ -1,14 +1,13 @@
 import { React, useRef, useState, useEffect } from "react";
 import { Button, Modal, Form, Card } from "react-bootstrap";
 import Header from "./Header";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 import axios from "axios";
 
-function MainPageAdmin(props) {
+function MainPageAdmin() {
   const { url } = useParams();
-  const [product, setProduct] = useState([]);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -23,9 +22,10 @@ function MainPageAdmin(props) {
 
   const [filteredDataApi, setFilteredDataApi] = useState([]);
 
+
+  console.log(isSwitchOn)
   const onSwitchAction = () => {
     setIsSwitchOn(!isSwitchOn);
-    console.log(isSwitchOn);
   };
   const fetchData = () => {
     axios
@@ -39,6 +39,7 @@ function MainPageAdmin(props) {
   };
   useEffect(() => {
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log("filteredDataApi", filteredDataApi);
   const handleSubmitsec = (e) => {
@@ -51,7 +52,7 @@ function MainPageAdmin(props) {
       description: descriptionsec,
       phone: phonesec,
       targeturl: targetURLsec,
-      ad: !isSwitchOn,
+      ad: isSwitchOn,
       pageName: url,
     };
 
@@ -73,21 +74,10 @@ function MainPageAdmin(props) {
   const [description, setDescription] = useState("");
   const [phone, setPhone] = useState("");
   const [targetURL, setTargetURL] = useState("");
-  const [ad, setAd] = useState("");
+  const [ad, setAd] = useState();
   const ref = useRef(null);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({ displayURL, title, description, phone, targetURL, ad });
-  };
 
   const handleClick = (item) => {
-    console.log("item", item);
-    //     ad: true
-    // description: "Real-time Threat Protection, Password Manager, Firewall for PC or Mac® & More. Powerful Protection of Your Devices and Personal information. Download It Today! PCMag Editor's Choice. 24/7 Customer Support. Net Banking Accepted. 1 Billion Devices Secured."
-    // id: 1
-    // phone: "+3189940-987"
-    // title: "Norton™ AntiVirus Plus - 2022 - Online Flash Sale: Only RS.499"
-    // url: "https://in.norton.com/official-site/india-2022"
     setAd(item.ad);
     setDescription(item.description);
     setPhone(item.phone);
@@ -99,12 +89,9 @@ function MainPageAdmin(props) {
   };
 
   const deleteClick = (id) => {
-    console.log(id);
     const data = filteredDataApi.filter((item) => item.id !== id);
-    console.log(data);
     setFilteredDataApi([...data]);
     axios
-      // .get(`https://search.letsfind.live/api/google/search/delete/${id}`)
       .get(
         `https://search.letsfind.live/api/google/search/delete?pageName=${url}&id=${id}`
       )
@@ -124,7 +111,7 @@ function MainPageAdmin(props) {
       description: description,
       phone: phone,
       targeturl: targetURL,
-      ad: ad,
+      ad: isSwitchOn,
       pageName: url,
     };
 
@@ -162,7 +149,7 @@ function MainPageAdmin(props) {
             key={item.id}
             style={{ display: "flex", justifyContent: "space-between" }}
           >
-            <div style={{ display: "inline-block" }}>
+            <div style={{ display: "inline-block",width:"100%" }}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ display: "flex" }}>
                   <p
@@ -175,15 +162,14 @@ function MainPageAdmin(props) {
                   >
                     Ad ·
                   </p>
-                  <p>{item.url}</p>
+                  <a href={item.url} ><p>{item.url}</p></a>
                 </div>
                 <p style={{ marginRight: "30px" }}>{item.phone}</p>
               </div>
               <div>
-                <p style={{ fontSize: "20px", color: "mediumblue" }}>
-                  {item.title}
-                </p>
-                <p>{item.description}</p>
+                <p>
+                <p style={{fontSize:"20px",color:"mediumblue",display:"flex",justifyContent:"space-between",marginRight: "30px"}}>{item.title}<Link  style={{fontSize:"10px",marginTop:"5px",color:"blue"}} to="/privacy">Privacy</Link></p>
+                  {item.description}</p>
               </div>
             </div>
             <div
@@ -215,112 +201,6 @@ function MainPageAdmin(props) {
               >
                 Launch demo modal
               </Button>
-
-              {/* <Modal show={show} onHide={() => setShow(false)}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Edit</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <Form onSubmit={(e) => handleSubmit(e)}>
-                    <Form.Group
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                      onChange={(e) => setAdsec(e.target.value)}
-                      value={adsec}
-                      className="mb-3"
-                      controlId="formBasicEmail"
-                    >
-                      <Form.Label style={{ marginRight: "10px" }}>
-                        <b>Ad</b>
-                      </Form.Label>
-                      <Form.Check
-                        onChange={onSwitchAction}
-                        checked={isSwitchOn}
-                        type="switch"
-                        id="custom-switch"
-                        value={item.ad}
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      onChange={(e) => setDisplayURL(e.target.value)}
-                      value={displayURL}
-                      className="mb-3"
-                      controlId="floatingTextarea2"
-                    >
-                      <Form.Label>
-                        <b>Display URL</b>
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Enter Display URL"
-                        value={item.url}
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      onChange={(e) => setTitle(e.target.value)}
-                      value={title}
-                      className="mb-3"
-                      controlId="floatingTextarea2"
-                    >
-                      <Form.Label>
-                        <b>Title</b>
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Enter Title"
-                        value={item.title}
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      onChange={(e) => setDescription(e.target.value)}
-                      value={description}
-                      className="mb-3"
-                      controlId="floatingTextarea2"
-                    >
-                      <Form.Label>
-                        <b>Description</b>
-                      </Form.Label>
-                      <Form.Control
-                        as="textarea"
-                        placeholder="Enter Description"
-                        value={item.description}
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      onChange={(e) => setPhone(e.target.value)}
-                      value={phone}
-                      className="mb-3"
-                      controlId="floatingTextarea2"
-                    >
-                      <Form.Label>
-                        <b>Phone</b>
-                      </Form.Label>
-                      <Form.Control
-                        value={item.phone}
-                        type="text"
-                        placeholder="Enter Phone"
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      onChange={(e) => setTargetURL(e.target.value)}
-                      value={targetURL}
-                      className="mb-3"
-                      controlId="floatingTextarea2"
-                    >
-                      <Form.Label>
-                        <b>Target URL</b>
-                      </Form.Label>
-                      <Form.Control
-                        value={item.url}
-                        type="text"
-                        placeholder="Enter Target URL"
-                      />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                      Submit
-                    </Button>
-                  </Form>
-                </Modal.Body>
-              </Modal> */}
             </>
             <>
               <Button
@@ -454,7 +334,6 @@ function MainPageAdmin(props) {
               value={displayURL}
               className="mb-3"
               controlId="floatingTextarea2"
-              value={displayURL}
             >
               <Form.Label>
                 <b>Display URL</b>

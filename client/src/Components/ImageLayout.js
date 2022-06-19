@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import toast, { Toaster } from 'react-hot-toast';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import {useNavigate } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 const ImageLayout = ({
@@ -76,6 +76,7 @@ const ImageLayout = ({
                 <div className='image-holder d-flex justify-content-center'>
                   <a href={image.link} target='_blank' rel="noreferrer">
                     <img
+                      alt='imag'
                       style={{
                         width: image.image.thumbnailWidth,
                         height: image.image.thumbnailHeight,
@@ -86,14 +87,14 @@ const ImageLayout = ({
                 </div>
                 <div className='image-text-holder'>
                   <div className='image-title'>
-                    <a href={image.image.contextLink} target='_blank'>
+                    <a href={image.image.contextLink} target='_blank' rel="noreferrer">
                       {limitText(image.title, 29)}
                     </a>
                   </div>
                   <a
                     href={image.image.contextLink}
                     target='_blank'
-                    className='image-display-link'
+                    className='image-display-link' rel="noreferrer"
                   >
                     {limitText(image.displayLink, 29)}
                   </a>

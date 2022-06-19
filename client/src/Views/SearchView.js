@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
@@ -40,7 +41,7 @@ const SearchView = () => {
         });
         setTimeout(() => navigate('/'), 2000);
       });
-  }, [searchValue]);
+  }, [navigate, searchValue]);
 
   const handleSearch = (i) => {
     axios
@@ -75,7 +76,8 @@ const SearchView = () => {
               <span class='sr-only'>(current)</span>
             </span>
           ) : (
-            <a class='page-link'>{i}</a>
+            // eslint-disable-next-line jsx-a11y/anchor-is-valid
+            <a className='page-link'>{i}</a>
           )}
         </li>
       );
@@ -156,11 +158,11 @@ const SearchView = () => {
                         return (
                           <div class='result'>
                             <h2>
-                              <a target='_blank' href={result.link}>
+                              <a target='_blank' href={result.link} rel="noreferrer">
                                 {result.title}
                               </a>
                             </h2>
-                            <a target='_blank' class='link' href={result.link}>
+                            <a target='_blank' class='link' href={result.link} rel="noreferrer">
                               {result.formattedUrl}
                             </a>
                             <p>{result.snippet}</p>
