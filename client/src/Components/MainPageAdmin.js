@@ -131,7 +131,7 @@ function MainPageAdmin() {
       <Header />
       <hr />
 
-      <ul style={{ width: "50%", marginLeft: "80px" }}>
+      <ul style={{ width: "50%", marginLeft: "80px",height:"380px" }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <h4 style={{ marginLeft: "20px" }}>
             <b>Route </b>/{url}
@@ -168,10 +168,12 @@ function MainPageAdmin() {
               </div>
               <div>
                 <p>
-                <p style={{fontSize:"20px",color:"mediumblue",display:"flex",justifyContent:"space-between",marginRight: "30px"}}>{item.title}<Link  style={{fontSize:"10px",marginTop:"5px",color:"blue"}} to="/privacy">Privacy</Link></p>
+                <p style={{fontSize:"20px",color:"mediumblue",display:"flex",justifyContent:"space-between",marginRight: "30px"}}>{item.title}</p>
                   {item.description}</p>
               </div>
+             
             </div>
+           
             <div
               style={{
                 display: "flex",
@@ -214,8 +216,11 @@ function MainPageAdmin() {
             </>
           </Card.Body>
         ))}
-      </ul>
 
+      </ul>
+ <footer style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",position: "relative",top:"180px"}}>
+                  <Link style={{color:"blue"}} to="/privacy">Privacy & Terms </Link>
+                  </footer>
       {/* add model */}
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>

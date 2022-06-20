@@ -29,39 +29,40 @@ function MainPageAdmin(props) {
 
 
     return (<>
-    <Header/>
-    <hr/>
-    
-    <ul style={{width:"50%",marginLeft:"80px"}}>
-    <div style={{display:"flex", justifyContent:"space-between"}}>
-    </div>
-        <>
-        
-            {filteredDataApi?.map((item) => (
-                <Card.Body key={item.id} style={{display:"flex",justifyContent:"space-between"}}>
-                  <div style={{ display: "inline-block",width:"100%" }}>
-                    <div style={{display:"flex",justifyContent:"space-between"}}>
-                        <div style={{display:"flex"}}>
-                        <p style={{fontWeight:"bold",color:"grey",marginRight:"10px",display:`${item.ad===true ? " " :"none" }`}}>Ad ·</p>
-                        <p>{item.url}</p>
-                        </div>
-                        
-                        <p >{item.phone}</p>
-                    </div>
-                    <div>
-                        <p style={{fontSize:"20px",color:"mediumblue",display:"flex",justifyContent:"space-between"}}>{item.title}<Link style={{fontSize:"10px",marginTop:"5px",color:"blue"}} to="/privacy">Privacy</Link></p>
-                        <p style={{width:"100%"}}>{item.description}</p> 
-                    </div>
-                    </div>
-                    </Card.Body>))} 
+                    <Header/>
+                    <hr/>
                     
-                    <h1 style={{display:`${responseMessage==="success"?"none":""}`}}>{responseMessage}</h1>
-        
-        
-        </>
-            
-        </ul>
-    </>
+
+                        <ul style={{width:"50%",marginLeft:"80px",height:"345px" }}>
+                          <div style={{display:"flex", justifyContent:"space-between"}}>
+                          </div>
+                            <>
+                                {filteredDataApi?.map((item) => (
+                                    <Card.Body key={item.id} style={{display:"flex",justifyContent:"space-between"}}>
+                                      <div style={{ display: "inline-block",width:"80%" }}>
+                                        <div style={{display:"flex",justifyContent:"space-between"}}>
+                                            <div style={{display:"flex"}}>
+                                            <p style={{fontWeight:"bold",color:"grey",marginRight:"10px",display:`${item.ad===true ? " " :"none" }`}}>Ad ·</p>
+                                            <p>{item.url}</p>
+                                            </div>
+                                            
+                                            <p >{item.phone}</p>
+                                        </div>
+                                        <div>
+                                            <p style={{fontSize:"20px",color:"mediumblue",display:"flex",justifyContent:"space-between"}}>{item.title}</p>
+                                            <p style={{width:"100%"}}>{item.description}</p> 
+                                        </div>
+                                      </div>
+                                    </Card.Body>))} 
+                                        
+                                <h1 style={{display:`${responseMessage==="success"?"none":""}`}}>{responseMessage}</h1>
+                            </>   
+                     
+                          </ul>
+                          <footer style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",position: "relative",top:"215px"}}>
+                  <Link style={{color:"blue"}} to="/privacy">Privacy & Terms </Link>
+                  </footer>
+              </>
         
           )
       }

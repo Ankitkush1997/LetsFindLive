@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../Components/Header';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const HomeView = () => {
   const navigate = useNavigate();
@@ -40,7 +40,11 @@ const HomeView = () => {
             ></svg>
           </button>
         </form>
+        <footer style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",position: "relative",top:"200px"}}>
+                  <Link style={{color:"white"}} to="/privacy">Privacy & Terms </Link>
+                  </footer>
       </section>
+   
     </div>
   );
 };
