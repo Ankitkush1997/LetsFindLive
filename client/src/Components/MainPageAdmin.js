@@ -131,7 +131,7 @@ function MainPageAdmin() {
       <Header />
       <hr />
 
-      <ul style={{ width: "50%", marginLeft: "80px",height:"380px" }}>
+      <ul style={{ width: "50%", marginLeft: "80px",minHeight:"550px"}}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <h4 style={{ marginLeft: "20px" }}>
             <b>Route </b>/{url}
@@ -168,7 +168,12 @@ function MainPageAdmin() {
               </div>
               <div>
                 <p>
-                <p style={{fontSize:"20px",color:"mediumblue",display:"flex",justifyContent:"space-between",marginRight: "30px"}}>{item.title}</p>
+                <p 
+                style={{fontSize:"20px",
+                        color:"mediumblue",
+                        display:"flex",
+                        justifyContent:"space-between",
+                        marginRight: "30px"}}> <a style={{color:"blue"}} target="_blank" href={item.targeturl} rel="noreferrer">{item.title}</a> </p>
                   {item.description}</p>
               </div>
              
@@ -218,9 +223,7 @@ function MainPageAdmin() {
         ))}
 
       </ul>
- <footer style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",position: "relative",top:"180px"}}>
-                  <Link style={{color:"blue"}} to="/privacy">Privacy & Terms </Link>
-                  </footer>
+      
       {/* add model */}
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -415,6 +418,9 @@ function MainPageAdmin() {
           </Form>
         </Modal.Body>
       </Modal>
+      <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",marginBottom:"20px"}}>
+                    <Link style={{color:"blue"}} to="/privacy">Privacy & Terms </Link>
+                </div>
     </>
   );
 }
