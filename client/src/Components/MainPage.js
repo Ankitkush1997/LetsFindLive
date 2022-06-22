@@ -47,7 +47,7 @@ function MainPageAdmin(props) {
                                     <p >{item.phone}</p>
                                 </div>
                                 <div>
-                                    <p style={{fontSize:"20px",color:"mediumblue",display:"flex",justifyContent:"space-between"}}>{item.title}</p>
+                                    <a target="_blank" href={item.targeturl} rel="noreferrer" style={{fontSize:"20px",color:"mediumblue",display:"flex",justifyContent:"space-between"}}>{item.title}</a>
                                     <p style={{width:"100%"}}>{item.description}</p> 
                                 </div>
                               </div>
