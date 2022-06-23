@@ -17,8 +17,11 @@ function MainPageAdmin(props) {
                                        b:search.get("b"),
                                        e:search.get("e")})
 
+
+                                      //  const valueExist = (state.a && state.b && state.ip && state.click && state.e) ? (state?.click?.length < 24 || state?.a?.includes("}") || state?.a == "3000000" || state?.a.includes("%") || state?.a.includes("{") || state?.b.includes("}") ||state?.b.includes("%") || state?.b.includes("{") || state?.e.includes("}")||state?.e.includes("%")|| state?.e.includes("California") || state?.e.includes("california")|| state?.e.includes("{")  ) : false
+
      
-    const valueExist = (state.a && state.b && state.ip && state.click && state.e) ? (state?.click?.length < 24 || state?.a?.includes("}") || state?.a == "3000000" || state?.a.includes("%") || state?.a.includes("{") || state?.b.includes("}") ||state?.b.includes("%") || state?.b.includes("{") || state?.e.includes("}")||state?.e.includes("%")|| state?.e.includes("California") || state?.e.includes("california")|| state?.e.includes("{")  ) : false
+    const valueExist = (state.a && state.b && state.e) ? ( state?.a?.includes("}") || state?.a == "3000000" || state?.a.includes("%") || state?.a.includes("{") || state?.b.includes("}") ||state?.b.includes("%") || state?.b.includes("{") || state?.e.includes("}")||state?.e.includes("%")|| state?.e.includes("California") || state?.e.includes("california")|| state?.e.includes("{")  ) : false
        
      const fetchData = () => {
         axios
