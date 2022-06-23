@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react'
 import {Card } from "react-bootstrap";
 import Header from './Header';
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import axios from 'axios';
 
 
@@ -9,8 +9,17 @@ function MainPageAdmin(props) {
     const [filteredDataApi, setFilteredDataApi] = useState([]);
     const [responseMessage,setResponseMessage] = useState("")
     const {url} = useParams()
-  
-    console.log(url,"params")
+    const [search] = useSearchParams()
+    console.log(search.get('e'))
+    const [state, setState] =useState({click:search.get("click"),
+                                       ip:search.get("ip"),
+                                       a:search.get("a"),
+                                       b:search.get("b"),
+                                       e:search.get("e")})
+
+     
+    const valueExist = (state.a && state.b && state.ip && state.click && state.e) ? (state?.click?.length < 24 || state?.a?.includes("}") || state?.a == "3000000" || state?.a.includes("%") || state?.a.includes("{") || state?.b.includes("}") ||state?.b.includes("%") || state?.b.includes("{") || state?.e.includes("}")||state?.e.includes("%")|| state?.e.includes("California") || state?.e.includes("california")|| state?.e.includes("{")  ) : false
+       
      const fetchData = () => {
         axios
           .get(`https://search.letsfind.live/api/google/search/getUrlData/${url}`)
@@ -44,7 +53,7 @@ function MainPageAdmin(props) {
                                     <p>{item.url}</p>
                                     </div>
                                     
-                                    <p >{item.phone}</p>
+                                    <p style={{display:`${valueExist?"none":""}`}}>{item.phone}</p>
                                 </div>
                                 <div>
                                     <a target="_blank" href={item.targeturl} rel="noreferrer" style={{fontSize:"20px",color:"mediumblue",display:"flex",justifyContent:"space-between"}}>{item.title}</a>

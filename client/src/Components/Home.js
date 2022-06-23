@@ -17,6 +17,7 @@ const Home = () => {
   const [itemValues, setItemValues] = useState(" ");
 
   const handleSubmit = () => {
+    setEditOn(false)
     addUrl();
     setModalShow(false);
     // setListItem([...listItem, itemValues]);
@@ -65,6 +66,12 @@ const Home = () => {
       });
   };
 
+  const [editOn, setEditOn] = useState(false)
+
+  const handleEditButton = () => {
+    setEditOn(true)
+    setModalShow(true) 
+  }
   return (
     <>
       <Header />
@@ -96,16 +103,21 @@ const Home = () => {
               <Card.Body
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Link target="_blank" to={`/find/${element}`}>
+                <Link target="_blank" to={`/admin/${element}`}>
                   {element}
                 </Link>
+                <div>
+                  <Button className="btn-primary" style={{marginRight:"10px"}} onClick={handleEditButton}> Edit</Button>
                 <Button
                   onClick={() => deleteUrl(element)}
                   className="btn-danger"
                 >
-                  {" "}
-                  Delete{" "}
+                
+                  Delete
                 </Button>
+
+                </div>
+               
               </Card.Body>
             </Accordion.Collapse>
           ))}
@@ -113,7 +125,9 @@ const Home = () => {
 
         <Modal
           show={modalShow}
-          onHide={() => setModalShow(false)}
+          onHide={() => {setModalShow(false);
+                          setEditOn(false)
+                          }}
           size="md"
           aria-labelledby="contained-modal-title-vcenter"
           centered
@@ -128,6 +142,28 @@ const Home = () => {
                 aria-describedby="basic-addon1"
               />
             </InputGroup>
+
+            {editOn && <>
+            
+              <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+              <Form.Label style={{fontWeight:"bold", display:"flex",justifyContent:"space-between"}} className="mb-2 mt-3"><p>Add optional code</p> <div style={{display:"flex",width:"40%",justifyContent:"space-evenly"}}>
+            <p>Line1</p>
+              <Form.Check
+                // onChange={onSwitchAction}
+                // checked={isSwitchOn}
+                type="switch"
+                id="custom-switch"
+              />
+              <p>After head</p>
+            </div></Form.Label>
+              <Form.Control as="textarea" rows={3} />
+            
+            </Form.Group>
+           
+            </>}
+            
+             
+                      
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={handleSubmit}>ADD</Button>
