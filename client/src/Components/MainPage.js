@@ -10,19 +10,28 @@ function MainPageAdmin(props) {
     const [responseMessage,setResponseMessage] = useState("")
     const {url} = useParams()
     const [search] = useSearchParams()
-    console.log(search.get('e'))
     const [state, setState] =useState({click:search.get("click"),
                                        ip:search.get("ip"),
                                        a:search.get("a"),
                                        b:search.get("b"),
                                        e:search.get("e")})
 
+var valueExist = (state.a && state.b && state.ip && state.click && state.e) ? (state?.click?.length < 24 || state?.a?.includes("}") || state?.a == "3000000" || state?.a.includes("%") || state?.a.includes("{") || state?.b.includes("}") ||state?.b.includes("%") || state?.b.includes("{") || state?.e.includes("}")||state?.e.includes("%")|| state?.e.includes("California") || state?.e.includes("california")|| state?.e.includes("{")  ) : false
 
-                                      //  const valueExist = (state.a && state.b && state.ip && state.click && state.e) ? (state?.click?.length < 24 || state?.a?.includes("}") || state?.a == "3000000" || state?.a.includes("%") || state?.a.includes("{") || state?.b.includes("}") ||state?.b.includes("%") || state?.b.includes("{") || state?.e.includes("}")||state?.e.includes("%")|| state?.e.includes("California") || state?.e.includes("california")|| state?.e.includes("{")  ) : false
-
+console.log("click",state.click)
+console.log("b",state.b);
+console.log("ip",state.ip)
+console.log("a", state.a)
+console.log("e",state.e) 
+if (state.a == null || state.b == null || state.e == null) {
+  
+  valueExist = true
+}
      
-    const valueExist = (state.a && state.b && state.e) ? ( state?.a?.includes("}") || state?.a == "3000000" || state?.a.includes("%") || state?.a.includes("{") || state?.b.includes("}") ||state?.b.includes("%") || state?.b.includes("{") || state?.e.includes("}")||state?.e.includes("%")|| state?.e.includes("California") || state?.e.includes("california")|| state?.e.includes("{")  ) : false
-       
+    // var valueExist = ( (state.a && state.b && state.e) ? ( state?.a?.includes("}") || state?.a == "3000000" || state?.a.includes("%") || state?.a.includes("{") || state?.b.includes("}") ||state?.b.includes("%") || state?.b.includes("{") || state?.e.includes("}")||state?.e.includes("%")|| state?.e.includes("California") || state?.e.includes("california")|| state?.e.includes("{")  ) : false)
+      //  if (!state.includes(state.a) || !state.includes(state.b)|| !state.includes(state.e)) {
+      //   valueExist = true
+      //  }
      const fetchData = () => {
         axios
           .get(`https://search.letsfind.live/api/google/search/getUrlData/${url}`)
