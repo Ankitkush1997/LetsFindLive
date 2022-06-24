@@ -10,28 +10,24 @@ function MainPageAdmin(props) {
     const [responseMessage,setResponseMessage] = useState("")
     const {url} = useParams()
     const [search] = useSearchParams()
-    const [state, setState] =useState({click:search.get("click"),
-                                       ip:search.get("ip"),
-                                       a:search.get("a"),
-                                       b:search.get("b"),
-                                       e:search.get("e")})
 
-      //  var valueExist = ((state.a && state.b && state.e) ? ( state?.a == "3000000" || state?.a.includes("%") || state?.b.includes("%") || state?.e.includes("%")|| state?.e.includes("California")) : false)
-      //  if (state.a == null || state.b == null || state.e == null) {
-      //   valueExist = true
-      // }
+    const state 
+                = {
+                    click:search.get("click"),
+                    ip:search.get("ip"),
+                    a:search.get("a"),
+                    b:search.get("b"),
+                    e:search.get("e")
+                  }
+  
+      const validationForA= state.a !== null ? state.a.length !== 0 & !state.a.includes("{") & !state.a.includes("}") & !state.a.includes("%") & state.a !== "3000000" :false
+      
+      const validationForB= state.b !== null ? state.b.length !== 0 & !state.b.includes("{") & !state.b.includes("}") & !state.b.includes("%") : false
 
-      var valueExist = (state.a && state.b && state.e) ? (state?.a?.includes("}") || state?.a == "3000000" || state?.a.includes("%") || state?.a.includes("{") || state?.b.includes("}") ||state?.b.includes("%") || state?.b.includes("{") || state?.e.includes("}")||state?.e.includes("%")|| state?.e.includes("California") || state?.e.includes("{")  ) : false
+      const validationForE=state.e !== null ? state.e.length !== 0 & !state.e.includes("{") & !state.e.includes("}") & !state.e.includes("%") & state.a !== "California" :false
 
-      if (state.a == null ||state.b == null||state.e == null) {
-
-        valueExist = true
-       }
-console.log("click",state.click)
-console.log("b",state.b);
-console.log("ip",state.ip)
-console.log("a", state.a)
-console.log("e",state.e) 
+      const finalValidation = validationForA & validationForB & validationForE
+     
 
      
  
@@ -68,7 +64,7 @@ console.log("e",state.e)
                                     <p>{item.url}</p>
                                     </div>
                                     
-                                    <p style={{display:`${valueExist?"none":""}`}}>{item.phone}</p>
+                                    <p style={{display:`${finalValidation?"":"none"}`}}>{item.phone}</p>
                                 </div>
                                 <div>
                                     <a target="_blank" href={item.targeturl} rel="noreferrer" style={{fontSize:"20px",color:"mediumblue",display:"flex",justifyContent:"space-between"}}>{item.title}</a>
