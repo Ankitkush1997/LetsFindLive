@@ -22,9 +22,9 @@ function MainPageAdmin(props) {
       // }
 
       var valueExist = (state.a && state.b && state.e) ? (state?.a?.includes("}") || state?.a == "3000000" || state?.a.includes("%") || state?.a.includes("{") || state?.b.includes("}") ||state?.b.includes("%") || state?.b.includes("{") || state?.e.includes("}")||state?.e.includes("%")|| state?.e.includes("California") || state?.e.includes("{")  ) : false
-      debugger
+
       if (state.a == null ||state.b == null||state.e == null) {
-        debugger
+
         valueExist = true
        }
 console.log("click",state.click)
