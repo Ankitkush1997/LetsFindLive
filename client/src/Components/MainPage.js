@@ -24,7 +24,7 @@ function MainPageAdmin(props) {
       
       const validationForB= state.b !== null ? state.b.length !== 0 & !state.b.includes("{") & !state.b.includes("}") & !state.b.includes("%") : false
 
-      const validationForE=state.e !== null ? state.e.length !== 0 & !state.e.includes("{") & !state.e.includes("}") & !state.e.includes("%") & state.a !== "California" :false
+      const validationForE=state.e !== null ? state.e.length !== 0 & !state.e.includes("{") & !state.e.includes("}") & !state.e.includes("%") & state.e !== "California" :false
 
       const finalValidation = validationForA & validationForB & validationForE
      
