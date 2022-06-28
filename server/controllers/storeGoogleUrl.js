@@ -129,7 +129,7 @@ const cloneURL = async (req, res) => {
       }
     try {
       let fetchDataFromPreviousFile = fs.readFileSync(__dirname + `/../db/${previousURL}.json`)
-       fs.copyFile(__dirname + `/../db/${previousURL}.json`,__dirname + `/../db/${newsURL}.json`,(err)=>{ throw err})
+       fs.copyFileSync(__dirname + `/../db/${previousURL}.json`,__dirname + `/../db/${newsURL}.json`)
       // if (fetchDataFromPreviousFile && fetchDataFromPreviousFile.length > 0) {
       //   fs.writeFileSync(__dirname + `/../db/${newsURL}.json`, fetchDataFromPreviousFile)
       // }else{
