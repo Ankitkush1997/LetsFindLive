@@ -103,8 +103,57 @@ async function validation(url) {
   }
 }
 
+
+
+const cloneURL = async (req, res) => {
+  try {
+    let previousURL = req.query.previousURL;
+    let newsURL = req.query.newsURL;
+    if (!previousURL) {
+      res.send({ code: 206, message: 'please add previous url', data: [] })
+      return
+    }
+    if (!newsURL) {
+      res.send({ code: 206, message: 'please add new url', data: [] })
+      return
+    }
+    let isPreviousURLExists = fs.existsSync(__dirname + `/../db/${previousURL}.json`)
+      if(!isPreviousURLExists){
+        res.send({ code: 211, message: 'previous url page not found', data: [] })
+        return
+      }
+      let isNewURLExists = fs.existsSync(__dirname + `/../db/${newsURL}.json`)
+      if(isNewURLExists){
+        res.send({ code: 211, message: 'new url page already exists', data: [] })
+        return
+      }
+    try {
+      let fetchDataFromPreviousFile = fs.readFileSync(__dirname + `/../db/${previousURL}.json`)
+       fs.copyFile(__dirname + `/../db/${previousURL}.json`,__dirname + `/../db/${newsURL}.json`,(err)=>{ throw err})
+      // if (fetchDataFromPreviousFile && fetchDataFromPreviousFile.length > 0) {
+      //   fs.writeFileSync(__dirname + `/../db/${newsURL}.json`, fetchDataFromPreviousFile)
+      // }else{
+      //   res.send({ code: 206, message: 'no data found in previous url page',data:[] })
+      //   return
+      // }
+    } catch (error) {
+      res.send({ code: 200, message: 'success', data: error })
+      return
+    }
+    res.send({ code: 200, message: 'success', data: '' })
+    return
+  } catch (error) {
+    if (error && error.code) {
+      res.send({ code: error.code, message: error.message })
+    } else {
+      res.send({ code: '', message: error.message })
+    }
+  }
+
+};
 module.exports = {
   storeUrls,
   deleteURLS,
-  URLList
+  URLList,
+  cloneURL
 };
