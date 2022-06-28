@@ -16,6 +16,26 @@ const Home = () => {
   const [listItem, setListItem] = useState([]);
   const [itemValues, setItemValues] = useState(" ");
 
+const handleClone = ( previousURL ) => {
+  
+  const newUrl = `${previousURL}${Math.floor(Math.random()*16777215).toString(16)}`
+
+  axios
+  .get(`https://www.letsfind.live/api/google/search/clone?newsURL=${newUrl}&previousURL=${previousURL}`)
+  .then((response) => {
+    // setFilteredDataApi(response?.data?.data);
+    fetchUrl();
+  })
+  .catch((error) => {
+    console.log("error", error);
+  });
+
+}
+
+
+
+
+
   const handleSubmit = () => {
     setEditOn(false)
     addUrl();
@@ -79,7 +99,7 @@ const Home = () => {
         style={{ display: "flex", justifyContent: "center" }}
         defaultActiveKey="0"
       >
-        <Card style={{ width: "50%" }}>
+        <Card style={{ width: "60%" }}>
           <Card.Header
             style={{ display: "flex", justifyContent: "space-between" }}
           >
@@ -108,6 +128,7 @@ const Home = () => {
                 </Link>
                 <div>
                   <Button className="btn-primary" style={{marginRight:"10px"}} onClick={handleEditButton}> Edit</Button>
+                  <Button className="btn-success" style={{marginRight:"10px"}} onClick={() => handleClone(element)}> Clone</Button>
                 <Button
                   onClick={() => deleteUrl(element)}
                   className="btn-danger"

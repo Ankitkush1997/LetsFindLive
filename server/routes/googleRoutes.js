@@ -35,6 +35,6 @@ router.get('/search/getUrlData/:pageName',getPageAllDataController.getPageData);
   router.get('/search/allURL', storeUrlController.URLList);
 
 // clone url on main page
-router.get('/search/clone', storeUrlController.cloneURL);
+router.post('/search/clone', storeUrlController.cloneURL);
 
 module.exports = router;

@@ -107,8 +107,8 @@ async function validation(url) {
 
 const cloneURL = async (req, res) => {
   try {
-    let previousURL = req.query.previousURL;
-    let newsURL = req.query.newsURL;
+    let previousURL = req.body.previousURL;
+    let newsURL = req.body.newsURL;
     if (!previousURL) {
       res.send({ code: 206, message: 'please add previous url', data: [] })
       return
