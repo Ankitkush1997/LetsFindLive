@@ -18,10 +18,14 @@ const Home = () => {
 
 const handleClone = ( previousURL ) => {
   
-  const newUrl = `${previousURL}${Math.floor(Math.random()*16777215).toString(16)}`
+  const newsURL = `${previousURL}${Math.floor(Math.random()*16777215).toString(16)}`
+  const payload = {
+    "newsURL":newsURL,
+    "previousURL":previousURL
+}
 
   axios
-  .get(`https://www.letsfind.live/api/google/search/clone?newsURL=${newUrl}&previousURL=${previousURL}`)
+  .post(`https://www.letsfind.live/api/google/search/clone`,payload)
   .then((response) => {
     // setFilteredDataApi(response?.data?.data);
     fetchUrl();
