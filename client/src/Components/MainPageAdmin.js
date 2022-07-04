@@ -1,13 +1,18 @@
 import { React, useRef, useState, useEffect } from "react";
 import { Button, Modal, Form, Card } from "react-bootstrap";
 import Header from "./Header";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-
 import axios from "axios";
+import {Helmet} from "react-helmet";
+
+
 
 function MainPageAdmin() {
   const { url } = useParams();
+  const location = useLocation()
+
+  const res = location.state
 
   const [showModal, setShowModal] = useState(false);
 
@@ -88,6 +93,26 @@ function MainPageAdmin() {
     ref.current.click();
   };
 
+
+ const handleScript = (e,d) => {
+    var ringba_com_tag="JS919526da516343ab8ea14d64ff4f1b96";
+    var _sc = d.getElementsByTagName("script"),
+    _s = _sc[_sc.length - 1];
+    e._rgba = e._rgba || { q: [] }; 
+    e._rgba.q.push({ tag: ringba_com_tag, script: _s });
+    if (!(e._rgba.loading = !!e._rgba.loading)) {
+        var sc = d.createElement('script'); 
+        sc.type = 'text/javascript'; 
+        sc.async = true;
+        sc.src = '//js.callcdn.com/js_v3/min/ringba.com.js';
+        var s = d.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(sc, s);
+        e._rgba.loading = true;
+    }
+}
+
+
+
   const deleteClick = (id) => {
     const data = filteredDataApi.filter((item) => item.id !== id);
     setFilteredDataApi([...data]);
@@ -130,6 +155,7 @@ function MainPageAdmin() {
     <>
       <Header />
       <hr />
+    
 
       <ul style={{ width: "50%", marginLeft: "80px",minHeight:"550px"}}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -164,7 +190,7 @@ function MainPageAdmin() {
                   </p>
                   <a href={item.url} ><p>{item.url}</p></a>
                 </div>
-                <p style={{ marginRight: "30px" }}>{item.phone}</p>
+                <p className="phone" style={{ marginRight: "30px" }}>{item.phone}</p>
               </div>
               <div>
                 <p>
@@ -421,6 +447,10 @@ function MainPageAdmin() {
       <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",marginBottom:"20px"}}>
                     <Link style={{color:"blue"}} to="/privacy">Privacy & Terms </Link>
                 </div>
+    <Helmet>
+      <script src={res} async></script>
+      
+    </Helmet>
     </>
   );
 }

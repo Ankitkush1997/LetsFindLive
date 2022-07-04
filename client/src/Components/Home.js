@@ -64,7 +64,6 @@ const handleClone = ( previousURL ) => {
     fetchUrl();
   }, []);
 
-  console.log("listItem", listItem);
 
   const addUrl = () => {
     axios
@@ -96,6 +95,15 @@ const handleClone = ( previousURL ) => {
     setEditOn(true)
     setModalShow(true) 
   }
+  
+  const [ allCode, setAllCode] = useState()
+  const handleChange = (e) => {
+     setAllCode(e.target.value)
+  }
+
+  console.log(allCode)
+
+
   return (
     <>
       <Header />
@@ -127,7 +135,7 @@ const handleClone = ( previousURL ) => {
               <Card.Body
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Link target="_blank" to={`/admin/${element}`}>
+                <Link target="_self" state={allCode} to={`/admin/${element}`}>
                   {element}
                 </Link>
                 <div>
@@ -181,7 +189,7 @@ const handleClone = ( previousURL ) => {
               />
               <p>After head</p>
             </div></Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Control value={allCode} as="textarea" rows={3} onChange={handleChange}/>
             
             </Form.Group>
            
