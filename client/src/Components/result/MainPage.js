@@ -3,6 +3,7 @@ import {Card } from "react-bootstrap";
 import Header from '../Header';
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 
 function MainPage(props) {
@@ -80,6 +81,9 @@ function MainPage(props) {
                 <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center", marginBottom:"20px"}}>
                     <Link style={{color:"blue"}} to="/privacy">Privacy & Terms </Link>
                 </div>
+                <Helmet>
+      <script src="//b-js.ringba.com/CAcf647261244d45d2b23345e60ed932bf" async></script>
+    </Helmet>
               </>
         
           )
