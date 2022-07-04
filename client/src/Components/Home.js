@@ -101,7 +101,6 @@ const handleClone = ( previousURL ) => {
      setAllCode(e.target.value)
   }
 
-  console.log(allCode)
 
 
   return (

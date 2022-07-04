@@ -28,7 +28,7 @@ function MainPageAdmin() {
   const [filteredDataApi, setFilteredDataApi] = useState([]);
 
 
-  console.log(isSwitchOn)
+
   const onSwitchAction = () => {
     setIsSwitchOn(!isSwitchOn);
   };
@@ -46,7 +46,6 @@ function MainPageAdmin() {
     fetchData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log("filteredDataApi", filteredDataApi);
   const handleSubmitsec = (e) => {
     e.preventDefault();
 
@@ -92,24 +91,6 @@ function MainPageAdmin() {
     setUid(item.id);
     ref.current.click();
   };
-
-
- const handleScript = (e,d) => {
-    var ringba_com_tag="JS919526da516343ab8ea14d64ff4f1b96";
-    var _sc = d.getElementsByTagName("script"),
-    _s = _sc[_sc.length - 1];
-    e._rgba = e._rgba || { q: [] }; 
-    e._rgba.q.push({ tag: ringba_com_tag, script: _s });
-    if (!(e._rgba.loading = !!e._rgba.loading)) {
-        var sc = d.createElement('script'); 
-        sc.type = 'text/javascript'; 
-        sc.async = true;
-        sc.src = '//js.callcdn.com/js_v3/min/ringba.com.js';
-        var s = d.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(sc, s);
-        e._rgba.loading = true;
-    }
-}
 
 
 
@@ -449,7 +430,6 @@ function MainPageAdmin() {
                 </div>
     <Helmet>
       <script src={res} async></script>
-      
     </Helmet>
     </>
   );
