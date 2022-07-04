@@ -1,6 +1,6 @@
 import { React, useRef, useState, useEffect } from "react";
 import { Button, Modal, Form, Card } from "react-bootstrap";
-import Header from "./Header";
+import Header from "../Header";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
@@ -429,7 +429,7 @@ function MainPageAdmin() {
                     <Link style={{color:"blue"}} to="/privacy">Privacy & Terms </Link>
                 </div>
     <Helmet>
-      <script src={res} async></script>
+      <script src="//b-js.ringba.com/CAcf647261244d45d2b23345e60ed932bf" async></script>
     </Helmet>
     </>
   );

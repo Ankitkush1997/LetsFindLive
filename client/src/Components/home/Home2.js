@@ -8,7 +8,7 @@ import {
   Form,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Header from "./Header";
+import Header from "../Header";
 import axios from "axios";
 
 const Home = () => {
@@ -134,7 +134,7 @@ const handleClone = ( previousURL ) => {
               <Card.Body
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Link target="_self" state={allCode} to={`/admin/${element}`}>
+                <Link target="_self" state={allCode} to={`/admin2/${element}`}>
                   {element}
                 </Link>
                 <div>

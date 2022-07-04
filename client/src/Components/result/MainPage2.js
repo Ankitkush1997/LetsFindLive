@@ -1,11 +1,11 @@
 import { React, useEffect, useState } from 'react'
 import {Card } from "react-bootstrap";
-import Header from './Header';
+import Header from '../Header';
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import axios from 'axios';
 
 
-function MainPageAdmin(props) {
+function MainPage2 (props) {
     const [filteredDataApi, setFilteredDataApi] = useState([]);
     const [responseMessage,setResponseMessage] = useState("")
     const {url} = useParams()
@@ -85,4 +85,4 @@ function MainPageAdmin(props) {
           )
       }
 
-export default MainPageAdmin;
+export default MainPage2;
